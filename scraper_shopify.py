@@ -43,28 +43,28 @@ class  ShopifyScraper():
                 products.append(item)
         return products
 
-    def main():
-        url = ShopifyScraper('#Aqui cambias la url de Shopify')
-        results = []
-        for page in range(1,47): ## Aqui se debe cambiar el rango en base a las páginas
-            data = url.dowloadjson(page)
-            print('Paginas: ', page)
-            try:
-                results.append(url.parsejson(data))
-            except:
-                print(f'Completado, total de páginas = {page -1 }')
-        return results
+def main():
+    url = ShopifyScraper('https://scalperscompany.com/')
+    results = []
+    for page in range(1,47): ## Aqui se debe cambiar el rango en base a las páginas
+        data = url.dowloadjson(page)
+        print('Paginas: ', page)
+        try:
+            results.append(url.parsejson(data))
+        except:
+            print(f'Completado, total de páginas = {page -1 }')
+    return results
 
-    if __name__ == '__main__':
-        db = dataset.connect('sqlite:///scraper.db') ### Aqui hay que poner una base de datos que se quiera.
-        table = db.create_table('scraper', primary_id = 'varid')
-        products = main()
-        totals = [ item for i in products for item in i ]
+if __name__ == '__main__':
+    db = dataset.connect('sqlite:///scalpers.db') ### Aqui hay que poner una base de datos que se quiera.
+    table = db.create_table('scalpers', primary_id = 'varid')
+    products = main()
+    totals = [ item for i in products for item in i ]
 
-        for p in totals:
-            if not table.find_one(varid=p['varid']):
-                table.insert(p)
-                print('Producto nuevo añadido')                    
+    for p in totals:
+        if not table.find_one(varid=p['varid']):
+            table.insert(p)
+            print('Producto nuevo añadido')                    
 
 
 
