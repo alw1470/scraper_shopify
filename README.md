@@ -1,5 +1,5 @@
 ## Descripción General
-Este script de Python es un raspador para tiendas Shopify, diseñado para extraer información detallada de productos de sitios web de Shopify. Está diseñado para recopilar datos de productos, incluyendo variantes, de la URL de una tienda Shopify especificada.
+Este script de Python es un scraper para tiendas Shopify, diseñado para extraer información detallada de productos de sitios web de Shopify. Está diseñado para recopilar datos de productos, incluyendo variantes, de la URL de una tienda Shopify especificada.
 
 ## Requisitos
 - Python 3.x
